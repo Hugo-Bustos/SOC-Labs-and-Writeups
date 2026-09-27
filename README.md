@@ -16,16 +16,16 @@ Cada laboratorio documentado incluye:
 
 ---
 
-## Índice de Laboratorios
+## 📂 Índice de Laboratorios
 
-###  01. Análisis de Tráfico de Red (PCAPs & NTA)
-* 🔹 **[https://github.com/Hugo-Bustos/Wireshark-Man-in-the-Middle-MITM-On-Path-Attack:]** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
+### 📡 01. Análisis de Tráfico de Red (PCAPs & NTA)
+* 🔹 **[MITM / On-Path Attack Analysis](https://github.com/Hugo-Bustos/Wireshark-Man-in-the-Middle-MITM-On-Path-Attack):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
-###  02. Análisis de Logs & SIEM
-* 🔹 **[https://github.com/Hugo-Bustos/Brute-Force-detection-example-]:** Identificación de patrones de intentos fallidos de autenticación en logs de servicios web/SSH usando Python.
+### 📊 02. Análisis de Logs & SIEM
+* 🔹 **[Detección de Ataque Brute Force](https://github.com/Hugo-Bustos/Brute-Force-detection-example-):** Identificación de patrones de intentos fallidos de autenticación en logs usando Python.
 
-###  03. Investigaciones de Laboratorios Destacados
-* 🔹 **[https://github.com/Hugo-Bustos/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol]:** Investigación de escalación de privilegios y persistencia en sistemas Linux.
+### 🧪 03. Investigaciones de Laboratorios
+* 🔹 **[TryHackMe - Grand Larceny Auto](https://github.com/Hugo-Bustos/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol):** Investigación de escalación de privilegios y persistencia en sistemas Linux.
 
 ---
 
