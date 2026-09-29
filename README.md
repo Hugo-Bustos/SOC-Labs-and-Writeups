@@ -22,7 +22,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Análisis de Red y Detección de Ataques MITM](<./Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)>):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
-* 🔹 **[Detección de Ataque Brute Force]
+* 🔹 **[Detección de Ataque Brute Force en LOGS](<./Scripts/Brute-Force/Analizador de logs (bruteforce def).py>)
 
 ### 🔐 03. Criptografía 
 * 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
