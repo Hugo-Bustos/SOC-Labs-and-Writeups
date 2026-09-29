@@ -1,3 +1,18 @@
+<!-- Badges de Rol y Metodología -->
+![Blue Team](https://img.shields.io/badge/Blue_Team-Defensive_Security-blue?style=for-the-badge)
+![SOC Analyst](https://img.shields.io/badge/SOC-Analyst-darkred?style=for-the-badge)
+![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT&CK-critical?style=for-the-badge)
+
+<!-- Badges de Herramientas Core -->
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
+![Splunk](https://img.shields.io/badge/Splunk-000000?style=for-the-badge&logo=splunk&logoColor=white)
+![ElasticSearch](https://img.shields.io/badge/ELK_Stack-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)
+
+<!-- Badges de Sistemas y Scripting -->
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
+
 # SOC-Labs-and-Writeups
 Repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
 
@@ -22,7 +37,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Análisis de Red y Detección de Ataques MITM](<./Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)>):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
-* 🔹 **[Detección de Ataque Brute Force en LOGS](<./Scripts/Brute-Force/Analizador de logs (bruteforce def).py>)
+* 🔹 **[Detección de Ataque Brute Force en LOGS](<./Scripts/Brute-Force/Analizador de logs (bruteforce def).py>):** Un script simple que ayuda a revisar logs e informar de potenciales peligros, como por ejemplo intentos de bruteforce.
 
 ### 🔐 03. Criptografía 
 * 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
