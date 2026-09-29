@@ -22,10 +22,10 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Análisis de Red y Detección de Ataques MITM](<./Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)>):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
-* 🔹 **[Detección de Ataque Brute Force](https://github.com/Hugo-Bustos/Brute-Force-detection-example-
+* 🔹 **[Detección de Ataque Brute Force]
 
 ### 🧪 03. Investigaciones de Laboratorios
-* 🔹 **[):** Investigación de escalación de privilegios y persistencia en sistemas Linux.
+* 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering / .NET Logic Flaw](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Investigación de escalación de privilegios y persistencia en sistemas Linux.
 
 ---
 
