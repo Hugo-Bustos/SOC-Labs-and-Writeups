@@ -1,3 +1,4 @@
+# 🛡️ SOC & Blue Team Labs Portfolio
 ![Blue Team](https://img.shields.io/badge/Blue_Team-Defensive_Security-blue?style=for-the-badge)
 ![SOC Analyst](https://img.shields.io/badge/SOC-Analyst-darkred?style=for-the-badge)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT&CK-critical?style=for-the-badge)
@@ -12,8 +13,6 @@
 
 # SOC-Labs-and-Writeups
 Repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
-
-# 🛡️ SOC & Blue Team Labs Portfolio
 
 Bienvenido a mi repositorio de laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Este espacio documenta el análisis técnico, metodologías de investigación y medidas de mitigación para diversos escenarios de amenazas reales y simuladas.
 
