@@ -1,14 +1,11 @@
-<!-- Badges de Rol y Metodología -->
 ![Blue Team](https://img.shields.io/badge/Blue_Team-Defensive_Security-blue?style=for-the-badge)
 ![SOC Analyst](https://img.shields.io/badge/SOC-Analyst-darkred?style=for-the-badge)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT&CK-critical?style=for-the-badge)
 
-<!-- Badges de Herramientas Core -->
 ![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
 ![Splunk](https://img.shields.io/badge/Splunk-000000?style=for-the-badge&logo=splunk&logoColor=white)
 ![ElasticSearch](https://img.shields.io/badge/ELK_Stack-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)
 
-<!-- Badges de Sistemas y Scripting -->
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
