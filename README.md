@@ -23,9 +23,11 @@ Cada laboratorio documentado incluye:
 
 ### 📊 02. Análisis de Logs & SIEM
 * 🔹 **[Detección de Ataque Brute Force]
-* 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
 
-### 🧪 03. Investigaciones de Laboratorios
+### 🔐 03. Criptografía 
+* 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
+  
+### 🧪 04. Investigaciones de Laboratorios
 * 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering / .NET Logic Flaw](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Investigación de escalación de privilegios y persistencia en sistemas Linux.
 
 ---
