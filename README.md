@@ -19,7 +19,7 @@ Cada laboratorio documentado incluye:
 ## 📂 Índice de Laboratorios
 
 ### 📡 01. Análisis de Tráfico de Red (PCAPs & NTA)
-* 🔹 **[):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
+* 🔹 **[Análisis de Red y Detección de Ataques MITM](Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
 * 🔹 **[Detección de Ataque Brute Force](https://github.com/Hugo-Bustos/Brute-Force-detection-example-
