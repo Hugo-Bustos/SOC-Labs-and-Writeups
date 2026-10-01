@@ -24,4 +24,4 @@ Para ejecutar este script, necesitas tener Python instalado y la librería `cryp
 pip install cryptography
 ```
 ## Acceso al código en Py
-[Enlace](<./cryptography/Example with Fernet/CodeF.py>)
+[Enlace](<./CodeF.py>)
