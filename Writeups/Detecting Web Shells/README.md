@@ -70,8 +70,9 @@ find /var/www/html/ -type f -name "upload_form.php"
 # Inspección del código fuente
 cat /var/www/html/wordpress/.../upload_form.php
 ```
-
+```
 Flag Capturada: THM{W3b_Sh3ll_Int3rnals}
+```
 
 #### Conclusiones y Mitigación
 
