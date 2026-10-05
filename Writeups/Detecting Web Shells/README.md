@@ -77,8 +77,18 @@ Flag Capturada: THM{W3b_Sh3ll_Int3rnals}
 
 La investigación confirmó una vulneración crítica por subida de archivos inseguros. Para mitigar este vector de ataque en un entorno real, se aplicarían los siguientes controles:
 
-   * Validación Estricta de Entradas (Input Validation): Implementar controles rigurosos en los formularios de subida, verificando el tipo MIME real y el contenido para bloquear ejecutables encubiertos.
+* Validación Estricta de Entradas (Input Validation): Implementar controles rigurosos en los formularios de subida, verificando el tipo MIME real y el contenido para bloquear ejecutables encubiertos.
 
-   * Principio de Menor Privilegio: Configurar carpetas de subida (ej. wp-content/uploads/) sin permisos de ejecución para que el servidor web no procese scripts maliciosos.
+* Principio de Menor Privilegio: Configurar carpetas de subida (ej. wp-content/uploads/) sin permisos de ejecución para que el servidor web no procese scripts maliciosos.
 
-   * Monitoreo de IoCs: Implementar reglas en el SIEM para alertar sobre picos inusuales de errores 404 (fuerza bruta de directorios) y la presencia de variables sospechosas como ?cmd= o ?exec= en las URLs.
+* Monitoreo de IoCs: Implementar reglas en el SIEM para alertar sobre picos inusuales de errores 404 (fuerza bruta de directorios) y la presencia de variables sospechosas como ?cmd= o ?exec= en las URLs.
+
+```
+ |\_/|    
+ (. .)
+  =w= (\  
+ / ^ \//  Atte Hev.
+(|| ||)
+,""_""_ .
+```
+
