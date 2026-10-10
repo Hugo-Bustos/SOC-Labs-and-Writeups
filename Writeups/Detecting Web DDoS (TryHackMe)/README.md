@@ -8,8 +8,6 @@
 ![Linux](https://img.shields.io/badge/Tool-Bash_CLI-yellow?style=flat-square&logo=linux)
 ![Web Security](https://img.shields.io/badge/Topic-Web_DDoS_Defense-darkgreen?style=flat-square)
 
-Este ejercicio de Blue Team se centra en la detección y análisis de un ataque DDoS (Distributed Denial-of-Service) de Capa 7 (Aplicación). 
-
 <img width="2400" height="1792" alt="Gemini_Generated_Image_gxfii6gxfii6gxfi" src="https://github.com/user-attachments/assets/0cf73f83-6f2a-4f36-80ae-83395ac198c1" />
 
 A diferencia de los ataques colosales tradicionales de red, los ataques de capa(layer) 7 buscan agotar los recursos del servidor apuntando a endpoints que requieren un alto procesamiento en la base de datos
