@@ -1,4 +1,4 @@
-# 🛡️ SOC & Blue Team Labs Portfolio
+# 🛡️ SOC & Blue Team Labs Portfolio 🛡️ 
 ![Blue Team](https://img.shields.io/badge/Blue_Team-Defensive_Security-blue?style=for-the-badge)
 ![SOC Analyst](https://img.shields.io/badge/SOC-Analyst-darkred?style=for-the-badge)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT&CK-critical?style=for-the-badge)
