@@ -9,7 +9,7 @@
 ![Web Security](https://img.shields.io/badge/Topic-Web_DDoS_Defense-darkgreen?style=flat-square)
 
 Este ejercicio de Blue Team se centra en la detección y análisis de un ataque DDoS (Distributed Denial-of-Service) de Capa 7 (Aplicación). 
-![Modelo OSI](Writeups/Detecting%20Web%20DDoS%20(TryHackMe)/Screenshot_9.png)
+![Modelo OSI](https://i.ibb.co/6803766a-b286-44c1-8451-b844caec1c33/image_3.png)
 
 A diferencia de los ataques volumétricos tradicionales de red, los ataques de Capa 7 buscan agotar los recursos del servidor apuntando a endpoints que requieren un alto procesamiento de base de datos (como /login o /search).
 
