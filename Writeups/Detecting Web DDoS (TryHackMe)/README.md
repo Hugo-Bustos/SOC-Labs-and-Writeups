@@ -12,6 +12,7 @@ Este ejercicio de Blue Team se centra en la detección y análisis de un ataque 
 
 <img width="2400" height="1792" alt="Gemini_Generated_Image_gxfii6gxfii6gxfi" src="https://github.com/user-attachments/assets/0cf73f83-6f2a-4f36-80ae-83395ac198c1" />
 
-A diferencia de los ataques volumétricos tradicionales de red, los ataques de Capa 7 buscan agotar los recursos del servidor apuntando a endpoints que requieren un alto procesamiento de base de datos (como /login o /search).
+A diferencia de los ataques colosales tradicionales de red, los ataques de capa(layer) 7 buscan agotar los recursos del servidor apuntando a endpoints que requieren un alto procesamiento en la base de datos
+como por ejemplo (/login search)
 
-El objetivo de este writeup es documentar el proceso de triaje, pasando desde el análisis manual de logs crudos en la terminal de Linux hasta la investigación avanzada utilizando Splunk (SIEM), culminando con estrategias de mitigación.
+Este writeup tiene como objetivo documentar el proceso de triaje, pasando desde el análisis manual de logs crudos en la terminal de Linux hasta la investigación avanzada utilizando Splunk (SIEM), culminando con estrategias de mitigación.
