@@ -1,4 +1,4 @@
-# Writeup: Detecting Web DDoS (TryHackMe)
+# 🤖 Writeup: Detecting Web DDoS (TryHackMe) 🤖
 
 ![TryHackMe](https://img.shields.io/badge/Platform-TryHackMe-red?style=flat-square&logo=tryhackme)
 ![Blue Team](https://img.shields.io/badge/Category-Blue_Team-blue?style=flat-square&logo=shield)
@@ -9,6 +9,7 @@
 ![Web Security](https://img.shields.io/badge/Topic-Web_DDoS_Defense-darkgreen?style=flat-square)
 
 Este ejercicio de Blue Team se centra en la detección y análisis de un ataque DDoS (Distributed Denial-of-Service) de Capa 7 (Aplicación). 
+
 <img width="2400" height="1792" alt="Gemini_Generated_Image_gxfii6gxfii6gxfi" src="https://github.com/user-attachments/assets/0cf73f83-6f2a-4f36-80ae-83395ac198c1" />
 
 A diferencia de los ataques volumétricos tradicionales de red, los ataques de Capa 7 buscan agotar los recursos del servidor apuntando a endpoints que requieren un alto procesamiento de base de datos (como /login o /search).
