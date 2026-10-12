@@ -50,5 +50,7 @@ Cada laboratorio documentado incluye:
 * **Sistemas Operativos:** Linux (Kali / Ubuntu), Windows Server.
 * **Scripting y Automatización:** Python (Scripting defensivo y procesamiento de JSON/CSV), Bash.
 
+## 📚 Conclusiones y reflexiones
+
 ---
 📫 **Contacto:** [LinkedIn](https://linkedin.com/in/hugo-bustos-fuentes) | [Portfolio Web](https://hugo-bustos.github.io)
