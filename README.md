@@ -50,7 +50,32 @@ Cada laboratorio documentado incluye:
 * **Sistemas Operativos:** Linux (Kali / Ubuntu), Windows Server.
 * **Scripting y Automatización:** Python (Scripting defensivo y procesamiento de JSON/CSV), Bash.
 
-## 📚 Conclusiones y reflexiones
+## 🧠 Principios que estoy aplicando
+
+Durante el desarrollo de este portafolio estoy intentando aplicar los siguientes principios de análisis:
+
+- **La evidencia debe respaldar la conclusión.** No considero un evento sospechoso como un incidente confirmado sin analizar su contexto y buscar evidencia adicional.
+
+- **El contexto importa.** La misma actividad puede ser legítima o maliciosa dependiendo del sistema afectado, el usuario, el momento, la frecuencia y el comportamiento esperado.
+
+- **Las detecciones deben ser medibles.** Un umbral o una regla de detección debe poder explicarse, probarse y evaluarse mediante escenarios positivos y negativos.
+
+- **Los falsos positivos forman parte del problema.** Una detección útil no solamente debe encontrar amenazas; también debe evitar generar una cantidad innecesaria de alertas irrelevantes.
+
+- **La correlación temporal es fundamental.** La relación entre eventos y el intervalo de tiempo en que ocurren puede ser determinante para distinguir actividad normal de comportamiento automatizado o malicioso.
+
+- **Las herramientas no reemplazan el razonamiento.** Wireshark, Splunk, Linux, Python u otras herramientas permiten obtener y procesar información, pero la interpretación de esa información sigue dependiendo del analista.
+
+- **Una investigación debe ser reproducible.** Intento documentar los comandos, filtros, consultas, evidencias y conclusiones de manera que otra persona pueda comprender y repetir el análisis.
+
+- **Las limitaciones también deben documentarse.** Si una evidencia no permite confirmar una hipótesis, prefiero señalar esa limitación antes que presentar una conclusión que los datos disponibles no permiten demostrar.
+
+- **La documentación es parte del trabajo defensivo.** Una buena investigación debe permitir que otro analista comprenda rápidamente qué ocurrió, qué evidencia existe, cuál es el nivel de riesgo y qué acciones podrían realizarse a continuación.
+
+Este repositorio representa mi proceso de aprendizaje y evolución técnica. Por ello, algunos proyectos son ejercicios iniciales y otros representan investigaciones más elaboradas. Mi intención es continuar revisándolos, mejorándolos y reemplazando progresivamente aproximaciones simples por detecciones y metodologías más robustas.
+
+Atentamente. 
+Hugo.
 
 ---
 📫 **Contacto:** [LinkedIn](https://linkedin.com/in/hugo-bustos-fuentes) | [Portfolio Web](https://hugo-bustos.github.io)
