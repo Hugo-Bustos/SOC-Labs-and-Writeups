@@ -104,7 +104,7 @@ Ordenando cronológicamente, filtramos las IPs del atacante para encontrar la pr
 ### Fase 3: Estrategias de Mitigación y Defensa
 
 Para prevenir futuros ataques de Capa 7 y asegurar la disponibilidad del servicio (Tríada CIA), se recomienda implementar la siguiente arquitectura de defensa:
-```
+
 Desafíos Cognitivos y de Ejecución (CAPTCHA/JavaScript): Implementar validaciones invisibles en JS o desafíos CAPTCHA en formularios críticos (/login, /register) para bloquear scripts automatizados que no pueden procesar estos retos.
 
 Content Delivery Network (CDN): Desplegar una CDN (ej. Cloudflare, Akamai) para almacenar en caché el contenido estático en servidores periféricos (edge servers). Esto absorbe los picos volumétricos y utiliza Load-Balancing para distribuir el tráfico legítimo entre múltiples servidores de origen.
@@ -112,13 +112,13 @@ Content Delivery Network (CDN): Desplegar una CDN (ej. Cloudflare, Akamai) para 
 Web Application Firewall (WAF): Integrar un WAF para inspeccionar el tráfico entrante de Capa 7. Se deben configurar reglas estrictas de Rate-Limiting (límite de peticiones por minuto por IP) y filtrar peticiones basándose en firmas de User-Agents maliciosos o peticiones malformadas.
 
 Validación de Entradas (Secure Coding): Asegurar que el código fuente de la aplicación sanitice y valide estrictamente los datos ingresados por el usuario, evitando el abuso lógico en consultas a bases de datos (Logic Abuse y Oversized Queries).
-```
+
 
 ### Fase 4: Habilidades demostradas 
-```
+
 La resolución de este incidente subraya que la eficacia de un analista SOC no reside únicamente en saber usar herramientas, sino en comprender la anatomía y el objetivo del ataque. 
 Enfrentar un DDoS de Capa 7 requiere ir más allá del monitoreo de red tradicional; exige entender cómo interactúa el tráfico malicioso con la lógica de la aplicación y los recursos del servidor. 
 La transición de analizar registros crudos en texto plano a correlacionar eventos estructurados en un SIEM demuestra el flujo de trabajo real necesario para aislar amenazas complejas y escalar la defensa frente a botnets modernas.
-```
+
 Este análisis fue realizado como parte del entrenamiento continuo en operaciones defensivas y análisis de tráfico.
 
