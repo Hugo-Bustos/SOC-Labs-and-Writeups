@@ -1,4 +1,4 @@
-# 🛡️ Portafolio: Hugo Bustos🛡️ 
+# 🛡️ Hugo Bustos — SOC & Blue Team Portfolio
 
 <img src="SOC HB.png" width="1080">
 
@@ -14,7 +14,6 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
-# SOC-Labs-and-Writeups
 Bienvenido (a) a mi repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
 
 En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación para diversos escenarios de amenazas reales y simuladas.
