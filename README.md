@@ -14,9 +14,9 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
-Bienvenido (a) a mi repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
+Bienvenido a mi repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
 
-En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación para diversos escenarios para potenciales amenazas.
+En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación frente a potenciales amenazas
 
 ---
 
@@ -36,7 +36,7 @@ Cada laboratorio documentado incluye:
 
 ### 📊 02. Análisis de Logs & SIEM
 * 🔹 **[Análisis de logs en error 401](<./Scripts/Analizador 401.py>): Detection Engineering básico para logs enfocado en el error 401.
-* 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis forense de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
+* 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
 * 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.  
 
 ### 🔐 03. Criptografía 
