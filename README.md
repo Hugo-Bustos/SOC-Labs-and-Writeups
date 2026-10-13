@@ -16,7 +16,7 @@
 
 Bienvenido (a) a mi repositorio de investigaciones, análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
 
-En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación para diversos escenarios de amenazas reales y simuladas.
+En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación para diversos escenarios para potenciales amenazas.
 
 ---
 
