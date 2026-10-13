@@ -41,7 +41,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
   
 ### 🧪 04. Investigaciones de Laboratorios
-* 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering / .NET Logic Flaw](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Investigación de escalación de privilegios y persistencia en sistemas Linux.
+* 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Investigación de escalación de privilegios y persistencia en sistemas Linux.
 
 ---
 
