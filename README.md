@@ -78,4 +78,4 @@ Atentamente.
 Hugo.
 
 ---
-📫 **Contacto:** [LinkedIn](https://linkedin.com/in/hugo-bustos-fuentes) | [Portfolio Web](https://hugo-bustos.github.io)
+📫 **Contacto:** [LinkedIn](https://linkedin.com/in/hugo-bustos-fuentes) 
