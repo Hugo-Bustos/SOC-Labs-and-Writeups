@@ -36,7 +36,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Análisis de Red y Detección de Ataques MITM](<./Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)>):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
-* 🔹 **
+* 🔹 **[Análisis de logs en error 401](<./Scripts/Analizador 401.py>): Detection Engineering básico para logs enfocado en el error 401, 18 intentos fallidos desde 192.168.X.X durante 4 minutos y 32 segundos, dirigidos contra 3 cuentas. 15 eventos correspondieron a HTTP 401. El comportamiento superó el umbral definido de 5 eventos dentro de una ventana de 5 minutos. Cabe señalar que a priori puede parecer un intento de Brute Force sin embargo aquello es solo una hipótesis, como analistas debemos ser prevenidos pero también cautelosos con un falso diagnóstico, es sabido que muchas veces los atacantes hacen una cortina de hubo, distraer mientras atacan algo neurálgico. 
 * 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis forense de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
 * 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.  
 
