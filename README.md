@@ -1,4 +1,7 @@
-# 🛡️ SOC & Blue Team Labs Portfolio 🛡️ 
+# 🛡️ Portafolio: Hugo Bustos🛡️ 
+
+<img src="SOC HB.png" width="1080">
+
 ![Blue Team](https://img.shields.io/badge/Blue_Team-Defensive_Security-blue?style=for-the-badge)
 ![SOC Analyst](https://img.shields.io/badge/SOC-Analyst-darkred?style=for-the-badge)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT&CK-critical?style=for-the-badge)
