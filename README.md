@@ -36,7 +36,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Análisis de Red y Detección de Ataques MITM](<./Writeups/Análisis de Red y Detección de Ataques MITM (Man-in-the-Middle)>):** Inspección de tráfico no cifrado en Wireshark y extracción de credenciales expuestas en peticiones POST.
 
 ### 📊 02. Análisis de Logs & SIEM
-* 🔹 **[Detección de Ataque Brute Force en LOGS](<./Scripts/Brute-Force/Analizador de logs (bruteforce def).py>):** Un script simple que ayuda a revisar logs e informar de potenciales peligros, como por ejemplo intentos de bruteforce.
+* 🔹 **
 * 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis forense de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
 * 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.  
 
