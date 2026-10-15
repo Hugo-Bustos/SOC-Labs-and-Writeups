@@ -37,7 +37,8 @@ Cada laboratorio documentado incluye:
 ### 📊 02. Análisis de Logs & SIEM
 * 🔹 **[Análisis de logs en error 401](<./Scripts/Analizador 401.py>)**: Detection Engineering básico para logs enfocado en el error 401.
 * 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
-* 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.  
+* 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.
+* 🔹 **[Investigación de un Endpoint Windows mediante Event Logs, Sysmon y PowerShell](<./Writeups/Windows Logging for SOC>):**: Este reporte documenta la investigación de un endpoint Windows comprometido mediante el análisis correlacionado de registros de seguridad nativos (Security.evtx), telemetría de Sysmon y artefactos locales de PowerShell.
 
 ### 🔐 03. Criptografía 
 * 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
