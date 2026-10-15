@@ -273,7 +273,6 @@ permitió recuperar comandos registrados durante la sesión de PowerShell.
 Get-LocalUser > users.txt
 Get-SmbShare > shares.txt
 ```
-<img src="Assets/Screenshot_23.png" width="1080" alt="Evidencia 10">
 
 Estos comandos permiten obtener información sobre:
 
