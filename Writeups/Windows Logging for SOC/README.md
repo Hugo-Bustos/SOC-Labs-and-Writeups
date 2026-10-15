@@ -56,7 +56,7 @@ El objetivo no fue analizar cada evento de forma aislada, sino determinar si las
 
 El análisis del Visor de Eventos reveló múltiples intentos fallidos de autenticación seguidos de un inicio de sesión RDP exitoso en el endpoint `THM-PC`.
 
-<img src="Screenshot_10.png" width="1080" alt="Evidencia 1">
+<img src="Assets/Screenshot_10.png" width="1080" alt="Evidencia 1">
 
 **Eventos involucrados:**
 
@@ -66,7 +66,7 @@ El análisis del Visor de Eventos reveló múltiples intentos fallidos de autent
 
 **Datos observados:**
 
-<img src="Screenshot_11.png" width="1080" alt="Evidencia 2">
+<img src="Assets/Screenshot_11.png" width="1080" alt="Evidencia 2">
 
 - **IP de origen:** `10.10.53.248`
 - **Cuenta:** `Administrator`
@@ -103,14 +103,14 @@ Después del inicio de sesión exitoso, se observaron modificaciones en las cuen
 - `4732` — Incorporación de un miembro a un grupo local.
 
 **Cuenta creada:**
-<img src="Screenshot_13.png" width="1080" alt="Evidencia 3">
+<img src="Assets/Screenshot_13.png" width="1080" alt="Evidencia 3">
 
 `svc_sysrestore`
 
 **Grupos identificados:**
 
-<img src="Screenshot_15.png" width="1080" alt="Evidencia 3">
-<img src="Screenshot_16.png" width="1080" alt="Evidencia 4">
+<img src="Assets/Screenshot_15.png" width="1080" alt="Evidencia 3">
+<img src="Assets/Screenshot_16.png" width="1080" alt="Evidencia 4">
 
 - `Backup Operators`
 - `Remote Desktop Users`
@@ -154,12 +154,12 @@ Se identificó actividad de `chrome.exe` asociada al usuario:
 El evento permitió identificar información asociada al **Mark of the Web (MotW)** del archivo descargado mediante el Alternate Data Stream utilizado por Windows para registrar información sobre el origen del archivo.
 
 **Artefacto identificado:**
-<img src="Screenshot_18.png" width="1080" alt="Evidencia 5">
+<img src="Assets/Screenshot_18.png" width="1080" alt="Evidencia 5">
 
 `ckjg.exe`
 
 **URL de origen:**
-<img src="Screenshot_19.png" width="1080" alt="Evidencia 6">
+<img src="Assets/Screenshot_19.png" width="1080" alt="Evidencia 6">
 
 `http://gettsveriff.com/bgj3/ckjg.exe`
 
@@ -194,13 +194,13 @@ Después de la actividad asociada al payload, Sysmon permitió identificar comun
 - **Sysmon Event ID 22:** DNS Query.
 
 **Infraestructura observada:**
-<img src="Screenshot_20.png" width="1080" alt="Evidencia 7">
+<img src="Assets/Screenshot_20.png" width="1080" alt="Evidencia 7">
 
 
 - **IP:** `193.46.217.4`
 - **Puerto:** `7777`
 - **Dominio:** `hkfasfsafg.click`
-<img src="Screenshot_21.png" width="1080" alt="Evidencia 8">
+<img src="Assets/Screenshot_21.png" width="1080" alt="Evidencia 8">
 
 La resolución DNS y posterior conexión de red proporcionan una relación entre la actividad del host y la infraestructura externa identificada.
 
@@ -254,7 +254,7 @@ El análisis del artefacto:
 ```text
 ConsoleHost_history.txt
 ```
-<img src="Screenshot_22.png" width="1080" alt="Evidencia 9">
+<img src="Assets/Screenshot_22.png" width="1080" alt="Evidencia 9">
 
 ubicado en:
 
@@ -271,7 +271,7 @@ permitió recuperar comandos registrados durante la sesión de PowerShell.
 Get-LocalUser > users.txt
 Get-SmbShare > shares.txt
 ```
-<img src="Screenshot_23.png" width="1080" alt="Evidencia 10">
+<img src="Assets/Screenshot_23.png" width="1080" alt="Evidencia 10">
 
 Estos comandos permiten obtener información sobre:
 
