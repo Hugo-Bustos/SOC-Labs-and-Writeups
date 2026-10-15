@@ -103,10 +103,14 @@ Después del inicio de sesión exitoso, se observaron modificaciones en las cuen
 - `4732` — Incorporación de un miembro a un grupo local.
 
 **Cuenta creada:**
+<img src="Screenshot_13.png" width="1080" alt="Evidencia 3">
 
 `svc_sysrestore`
 
 **Grupos identificados:**
+
+<img src="Screenshot_15.png" width="1080" alt="Evidencia 3">
+<img src="Screenshot_16.png" width="1080" alt="Evidencia 4">
 
 - `Backup Operators`
 - `Remote Desktop Users`
@@ -119,7 +123,7 @@ Estos privilegios **podrían ser abusados para acceder a información sensible d
 
 > **Limitación:** La evidencia presentada en este análisis demuestra la creación de la cuenta y su incorporación a grupos, pero no permite confirmar por sí sola que se haya realizado una extracción de credenciales desde `SAM` o `SYSTEM`.
 
-### 🔎 Consideración para el SOC
+### Consideración para el SOC
 
 La creación de cuentas locales privilegiadas debería correlacionarse con:
 
@@ -150,12 +154,15 @@ Se identificó actividad de `chrome.exe` asociada al usuario:
 El evento permitió identificar información asociada al **Mark of the Web (MotW)** del archivo descargado mediante el Alternate Data Stream utilizado por Windows para registrar información sobre el origen del archivo.
 
 **Artefacto identificado:**
+<img src="Screenshot_18.png" width="1080" alt="Evidencia 5">
 
 `ckjg.exe`
 
 **URL de origen:**
+<img src="Screenshot_19.png" width="1080" alt="Evidencia 6">
 
 `http://gettsveriff.com/bgj3/ckjg.exe`
+
 
 La información de origen resulta relevante para el análisis porque permite identificar infraestructura potencialmente relacionada con la entrega del artefacto y generar indicadores para futuras investigaciones.
 
@@ -187,10 +194,13 @@ Después de la actividad asociada al payload, Sysmon permitió identificar comun
 - **Sysmon Event ID 22:** DNS Query.
 
 **Infraestructura observada:**
+<img src="Screenshot_20.png" width="1080" alt="Evidencia 7">
+
 
 - **IP:** `193.46.217.4`
 - **Puerto:** `7777`
 - **Dominio:** `hkfasfsafg.click`
+<img src="Screenshot_21.png" width="1080" alt="Evidencia 8">
 
 La resolución DNS y posterior conexión de red proporcionan una relación entre la actividad del host y la infraestructura externa identificada.
 
@@ -198,7 +208,7 @@ El dominio presenta características inusuales y fue observado durante la activi
 
 Del mismo modo, el uso del puerto `7777` no constituye por sí mismo evidencia de actividad maliciosa. La sospecha aumenta debido a su correlación temporal y contextual con el proceso investigado.
 
-### 🔎 Consideración para el SOC
+### Consideración para el SOC
 
 La conexión debería analizarse considerando:
 
@@ -244,6 +254,7 @@ El análisis del artefacto:
 ```text
 ConsoleHost_history.txt
 ```
+<img src="Screenshot_22.png" width="1080" alt="Evidencia 9">
 
 ubicado en:
 
@@ -255,10 +266,12 @@ permitió recuperar comandos registrados durante la sesión de PowerShell.
 
 ### Actividad de descubrimiento
 
+
 ```powershell
 Get-LocalUser > users.txt
 Get-SmbShare > shares.txt
 ```
+<img src="Screenshot_23.png" width="1080" alt="Evidencia 10">
 
 Estos comandos permiten obtener información sobre:
 
@@ -283,7 +296,7 @@ que elimina elementos de la papelera de reciclaje.
 
 La combinación de estas acciones resulta relevante desde una perspectiva de investigación porque muestra actividad de reconocimiento y manipulación del entorno posterior al acceso.
 
-### 🔎 Limitación de la telemetría
+### Limitación de la telemetría
 
 Sysmon Event ID `1` permite observar la creación de procesos como `powershell.exe`, pero no proporciona por sí solo una visibilidad completa de todos los comandos ejecutados dentro de una sesión.
 
@@ -293,7 +306,7 @@ Por lo tanto, `ConsoleHost_history.txt` debe considerarse una fuente complementa
 
 ---
 
-# 🔗 Correlación de Evidencias
+# Correlación de Evidencias
 
 La investigación adquiere mayor valor al analizar conjuntamente las diferentes fuentes de telemetría.
 
@@ -316,7 +329,7 @@ Un punto especialmente relevante es la utilización de identificadores de sesió
 
 ---
 
-# 🧭 Mapeo MITRE ATT&CK
+# Mapeo MITRE ATT&CK
 
 Las técnicas deben asociarse únicamente cuando existe evidencia suficiente en el laboratorio.
 
@@ -336,7 +349,7 @@ Las técnicas deben asociarse únicamente cuando existe evidencia suficiente en 
 
 ---
 
-# 🚩 Indicadores y Artefactos de Compromiso
+# Indicadores y Artefactos de Compromiso
 
 | Categoría | Indicador | Descripción |
 |---|---|---|
@@ -352,7 +365,7 @@ Las técnicas deben asociarse únicamente cuando existe evidencia suficiente en 
 
 ---
 
-# 🛡️ Recomendaciones de Contención y Respuesta
+# Recomendaciones de Contención y Respuesta
 
 A partir de la evidencia observada, las acciones defensivas prioritarias serían:
 
@@ -368,7 +381,7 @@ A partir de la evidencia observada, las acciones defensivas prioritarias serían
 
 ---
 
-# 🧠 Aprendizajes Clave como Analista SOC
+# Aprendizajes Clave como Analista SOC
 
 ### 1. El poder de la correlación mediante Logon ID
 
