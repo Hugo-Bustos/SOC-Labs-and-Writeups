@@ -5,7 +5,7 @@
 ![Sysmon](https://img.shields.io/badge/Sysinternals-Sysmon-blue?style=for-the-badge)
 ![PowerShell](https://img.shields.io/badge/DFIR-PowerShell-5391FE?style=for-the-badge&logo=powershell)
 
-<img src="Investigación20%forense20%de20%endpoint20%Windows.png" width="1080" alt="Evidencia 1">
+<img src="Investigación20%forense20%de20%endpoint20%Windows.png" width="1080">
 Writeups/Windows Logging for SOC/Investigación forense de endpoint Windows.png
 ## Resumen Ejecutivo
 
