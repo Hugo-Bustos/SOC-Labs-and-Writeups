@@ -17,7 +17,7 @@ La investigación se basa en la correlación temporal y contextual de distintas 
 
 ---
 
-## 🔎 Metodología de Investigación
+## Metodología de Investigación
 
 La investigación se realizó mediante la correlación de distintas fuentes de telemetría:
 
@@ -31,7 +31,7 @@ El objetivo no fue analizar cada evento de forma aislada, sino determinar si las
 
 ---
 
-# ⏱️ Timeline de la Intrusión
+# Timeline de la Intrusión
 
 | Etapa | Fuente | Evento | Interpretación |
 |---|---|---|---|
@@ -50,11 +50,13 @@ El objetivo no fue analizar cada evento de forma aislada, sino determinar si las
 
 ---
 
-# 🧩 Análisis Táctico de la Cadena de Ataque
+# Análisis Táctico de la Cadena de Ataque
 
 ## 1. Acceso Inicial — RDP
 
 El análisis del Visor de Eventos reveló múltiples intentos fallidos de autenticación seguidos de un inicio de sesión RDP exitoso en el endpoint `THM-PC`.
+
+<img src="Screenshot_10.png" width="1080" alt="Evidencia 1">
 
 **Eventos involucrados:**
 
@@ -64,9 +66,13 @@ El análisis del Visor de Eventos reveló múltiples intentos fallidos de autent
 
 **Datos observados:**
 
+<img src="Screenshot_11.png" width="1080" alt="Evidencia 2">
+
 - **IP de origen:** `10.10.53.248`
 - **Cuenta:** `Administrator`
 - **Logon ID:** `0x183c36d`
+
+
 
 La secuencia de múltiples eventos `4625` seguida de un `4624` desde la misma fuente es **consistente con un intento de fuerza bruta exitoso contra RDP**.
 
