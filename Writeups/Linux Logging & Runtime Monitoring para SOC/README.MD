@@ -1,4 +1,4 @@
-Linux Logging & Runtime Monitoring para SOC
+# Writeup: Linux Logging & Runtime Monitoring para SOC
 
 ![Role](https://img.shields.io/badge/Role-Senior_SOC_Analyst-2a3d66?style=for-the-badge&logo=linux)
 ![Nivel](https://img.shields.io/badge/Nivel-Intermedio%2FAvanzado-bf360c?style=for-the-badge)
