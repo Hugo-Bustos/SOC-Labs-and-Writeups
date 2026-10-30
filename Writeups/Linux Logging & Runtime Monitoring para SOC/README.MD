@@ -1,4 +1,4 @@
-# Writeup: Linux Logging & Runtime Monitoring para SOC
+# Writeup: Linux Logging & Runtime Monitoring para SOC 
 
 ![Role](https://img.shields.io/badge/Role-Senior_SOC_Analyst-2a3d66?style=for-the-badge&logo=linux)
 ![Nivel](https://img.shields.io/badge/Nivel-Intermedio%2FAvanzado-bf360c?style=for-the-badge)
@@ -6,6 +6,17 @@
 ![OS](https://img.shields.io/badge/OS-Ubuntu_Linux-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Herramientas](https://img.shields.io/badge/Tools-Auditd%20%7C%20Grep%20%7C%20Ausearch-004d40?style=for-the-badge)
 
-📝 Introducción
+## Introducción
 
 En el ecosistema corporativo moderno, Linux es la columna vertebral de la infraestructura crítica, alojando desde servidores web hasta bases de datos y clústeres en la nube. Contrario a la creencia popular, los entornos Linux son un objetivo prioritario para los actores de amenazas (APTs). En este laboratorio, asumimos el rol de analistas SOC para realizar un triage forense y cacería de amenazas (Threat Hunting), correlacionando eventos desde archivos de texto plano tradicionales hasta el monitoreo de llamadas al sistema (syscalls) en tiempo real mediante auditd.
+
+
+## La Importancia del Monitoreo en Linux🐧
+
+Para un Blue Team, la visibilidad es la diferencia entre contener un incidente en minutos o descubrir una brecha meses después de la exfiltración de datos. La recolección estructurada de logs en Linux permite:
+
+✔️ Reconstruir Líneas de Tiempo (Timelining): Rastrear la actividad del atacante desde el compromiso inicial (fuerza bruta SSH) hasta el movimiento lateral o impacto.
+
+✔️ Identificar TTPs: Mapear el comportamiento del atacante utilizando el framework MITRE ATT&CK (ej. T1110 para fuerza bruta, T1105 para transferencia de herramientas).
+
+✔️ Auditoría de Integridad: Detectar la manipulación de configuraciones críticas o la creación de usuarios encubiertos (backdoors).
