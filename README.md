@@ -78,11 +78,7 @@ No todos los laboratorios permiten completar todas estas etapas. Cuando la evide
 
 ---
 
-## Herramientas Utilizadas
-* **Monitoreo y Análisis:** Wireshark, Tshark, Splunk, ELK Stack, Brim.
-* **Sistemas Operativos:** Linux (Kali / Ubuntu), Windows Server.
-* **Scripting y Automatización:** Python (Scripting defensivo y procesamiento de JSON/CSV), Bash.
-
+## Herramientas y tecnologías:
 
 * **SIEM y análisis de seguridad:** Splunk, ELK Stack, Brim.
 * **Análisis de red:** Wireshark, Tshark.
@@ -90,6 +86,7 @@ No todos los laboratorios permiten completar todas estas etapas. Cuando la evide
 * **Linux / monitoreo:** syslog, auth.log, auditd, ausearch.
 * **Scripting y automatización:** Python, Bash.
 * **Frameworks y metodologías:** MITRE ATT&CK, análisis basado en evidencia e investigación orientada a incidentes.
+
 ## Principios que estoy aplicando
 
 Durante el desarrollo de este portafolio estoy intentando aplicar los siguientes principios de análisis:
