@@ -13,6 +13,10 @@
 En el ecosistema corporativo moderno, Linux es la columna vertebral de la infraestructura crítica, alojando desde servidores web hasta bases de datos y clústeres en la nube. Contrario a la creencia popular, los entornos Linux son un objetivo prioritario para los actores de amenazas (APTs). En este laboratorio, asumimos el rol de analistas SOC para realizar un triage forense y cacería de amenazas (Threat Hunting), correlacionando eventos desde archivos de texto plano tradicionales hasta el monitoreo de llamadas al sistema (syscalls) en tiempo real mediante auditd.
 
 
+## Resumen 
+
+Se investigó un servidor Ubuntu Linux comprometido tras alertas de actividad anómala. El análisis forense reveló que un adversario logró acceso mediante un ataque de fuerza bruta SSH. Una vez dentro, el atacante estableció persistencia (creación de cuentas en grupo `sudo`), ejecutó técnicas de evasión de defensas (deshabilitando el EDR local) y utilizó la herramienta `wget` para descargar el escáner de red **Naabu**. El incidente culminó con un escaneo interno hacia el segmento `192.168.50.0/24` y la búsqueda sistemática de archivos confidenciales.
+
 ## La Importancia del Monitoreo en Linux🐧
 
 -Para un Blue Team, la visibilidad es la diferencia entre contener un incidente en minutos o descubrir una brecha meses después de la exfiltración de datos. La recolección estructurada de logs en Linux permite:
