@@ -20,3 +20,30 @@ Para un Blue Team, la visibilidad es la diferencia entre contener un incidente e
 ✔️ Identificar TTPs: Mapear el comportamiento del atacante utilizando el framework MITRE ATT&CK (ej. T1110 para fuerza bruta, T1105 para transferencia de herramientas).
 
 ✔️ Auditoría de Integridad: Detectar la manipulación de configuraciones críticas o la creación de usuarios encubiertos (backdoors).
+
+## Desafíos Operativos para el SOC
+
+✔️ Monitorear sistemas Linux presenta barreras arquitectónicas que todo analista senior debe sortear:
+
+✔️ Falta de Estandarización: A diferencia de los Event IDs estructurados de Windows, los logs de Linux suelen ser texto plano no estructurado que varía drásticamente entre distribuciones (Debian vs. RHEL).
+
+✔️ Ruido Excesivo: Archivos como /var/log/syslog ingieren miles de eventos por minuto generados por procesos benignos y tareas cron, dificultando la extracción de la señal maliciosa.
+
+✔️ Puntos Ciegos Nativos: Por defecto, Linux no registra la creación de procesos efímeros, conexiones de red o modificaciones a archivos a nivel de kernel. Los atacantes pueden evadir el historial (~/.bash_history) fácilmente. Esto hace obligatorio el despliegue de herramientas de Runtime Monitoring como auditd o motores eBPF.
+
+## Metodología de Investigación y Ejecución de Comandos
+
+A continuación, se detalla el flujo de investigación y los comandos ejecutados durante la respuesta a incidentes.
+
+1. Triage Inicial y Correlación de Tiempo (/var/log/syslog)
+
+Antes de analizar anomalías, es crucial verificar que el reloj del servidor esté sincronizado (NTP) para que los timestamps de los logs coincidan con la red global. También auditamos los mensajes del kernel (ej. el módulo de seguridad Yama).
+
+```Bash
+
+# Identificar el servidor de tiempo contactado por el sistema
+grep -i "Contacted time server" /var/log/syslog
+
+# Verificar mensajes de inicialización de módulos de seguridad del Kernel
+grep -i "yama" /var/log/syslog
+```
