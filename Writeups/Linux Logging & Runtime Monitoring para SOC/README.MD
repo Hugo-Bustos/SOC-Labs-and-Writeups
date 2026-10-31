@@ -1,7 +1,7 @@
-# Writeup: Linux Logging & Runtime Monitoring para SOC 
+# Writeup: Linux Logging & Runtime Monitoring para SOC
 
-![Role](https://img.shields.io/badge/Role-Senior_SOC_Analyst-2a3d66?style=for-the-badge&logo=linux)
-![Nivel](https://img.shields.io/badge/Nivel-Intermedio%2FAvanzado-bf360c?style=for-the-badge)
+![Role](https://img.shields.io/badge/Role-SOC%20%7C%20Blue%20Team-2a3d66?style=for-the-badge&logo=linux)
+![Nivel](https://img.shields.io/badge/Nivel-Formaci%C3%B3n%20Pr%C3%A1ctica-455a64?style=for-the-badge)
 ![TryHackMe](https://img.shields.io/badge/TryHackMe-Linux_Logging_for_SOC-111927?style=for-the-badge&logo=tryhackme&logoColor=white)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_Linux-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Herramientas](https://img.shields.io/badge/Tools-Auditd%20%7C%20Grep%20%7C%20Ausearch-004d40?style=for-the-badge)
@@ -10,134 +10,147 @@
 
 ## Introducción
 
-En el ecosistema corporativo moderno, Linux es la columna vertebral de la infraestructura crítica, alojando desde servidores web hasta bases de datos y clústeres en la nube. Contrario a la creencia popular, los entornos Linux son un objetivo prioritario para los actores de amenazas (APTs). En este laboratorio, asumimos el rol de analistas SOC para realizar un triage forense y cacería de amenazas (Threat Hunting), correlacionando eventos desde archivos de texto plano tradicionales hasta el monitoreo de llamadas al sistema (syscalls) en tiempo real mediante auditd.
+En el ecosistema corporativo moderno, Linux forma parte de una gran variedad de infraestructuras críticas, desde servidores web y bases de datos hasta cargas de trabajo en la nube. Estos sistemas también pueden ser objetivo de actores de amenazas. En este laboratorio, asumo el rol de analista SOC para realizar un triage e investigación de un servidor Ubuntu comprometido, correlacionando evidencia procedente de logs tradicionales con telemetría de `auditd` sobre actividad de procesos y acceso a recursos.
 
+## Resumen
 
-## Resumen 
+Se investigó un servidor Ubuntu Linux comprometido tras alertas de actividad anómala. El análisis identificó un patrón de intentos fallidos de autenticación SSH compatible con **Password Guessing**, seguido de actividad posterior sobre el sistema. Durante la investigación se observó la creación de una cuenta local con privilegios administrativos, la ejecución de un comando destinado a detener el EDR local y la descarga de la herramienta de escaneo de red **Naabu** mediante `wget`.
 
-Se investigó un servidor Ubuntu Linux comprometido tras alertas de actividad anómala. El análisis forense reveló que un adversario logró acceso mediante un ataque de fuerza bruta SSH. Una vez dentro, el atacante estableció persistencia (creación de cuentas en grupo `sudo`), ejecutó técnicas de evasión de defensas (deshabilitando el EDR local) y utilizó la herramienta `wget` para descargar el escáner de red **Naabu**. El incidente culminó con un escaneo interno hacia el segmento `192.168.50.0/24` y la búsqueda sistemática de archivos confidenciales.
+La actividad culminó con un escaneo del segmento interno `192.168.50.0/24` y una búsqueda recursiva de archivos cuyo nombre contenía `secret`. La evidencia permite reconstruir estas acciones en el laboratorio, pero no demuestra por sí sola que dichos archivos hayan sido exfiltrados o modificados.
 
-## La Importancia del Monitoreo en Linux🐧
+## La importancia del monitoreo en Linux 🐧
 
-- Para un Blue Team, la visibilidad es la diferencia entre contener un incidente en minutos o descubrir una brecha meses después de la exfiltración de datos. La recolección estructurada de logs en Linux permite:
+Para un Blue Team, la visibilidad es fundamental para reducir el tiempo entre la ocurrencia de una actividad sospechosa y su detección. La recolección y correlación de logs en Linux permite:
 
-- Reconstruir Líneas de Tiempo (Timelining): Rastrear la actividad del atacante desde el compromiso inicial (fuerza bruta SSH) hasta el movimiento lateral o impacto.
+- **Reconstruir líneas de tiempo:** relacionar autenticaciones, creación de cuentas, ejecución de comandos y actividad posterior.
+- **Identificar TTPs:** mapear comportamientos observados al framework MITRE ATT&CK, cuando la evidencia disponible respalda la técnica.
+- **Investigar cambios y actividad sensible:** detectar creación de usuarios, ejecución de herramientas y acceso a rutas que requieran especial atención.
+- **Correlacionar fuentes:** combinar logs de autenticación con telemetría de auditoría para obtener mayor contexto que el disponible en una única fuente.
 
-- Identificar TTPs: Mapear el comportamiento del atacante utilizando el framework MITRE ATT&CK (ej. T1110 para fuerza bruta, T1105 para transferencia de herramientas).
+## Desafíos operativos para el SOC
 
-- Auditoría de Integridad: Detectar la manipulación de configuraciones críticas o la creación de usuarios encubiertos (backdoors).
+Monitorear sistemas Linux presenta varios desafíos que un analista debe considerar:
 
-## Desafíos Operativos para el SOC
+- **Falta de estandarización:** el formato y las fuentes de logs pueden variar entre distribuciones, servicios y configuraciones.
+- **Ruido excesivo:** archivos como `/var/log/syslog` pueden contener una gran cantidad de eventos legítimos generados por servicios, procesos y tareas programadas.
+- **Visibilidad limitada por defecto:** la visibilidad sobre creación de procesos, conexiones de red o acceso a archivos depende de los servicios y mecanismos de auditoría configurados. El historial de shell, por ejemplo, tampoco constituye un registro completo de la actividad ejecutada.
+- **Necesidad de telemetría adicional:** herramientas como `auditd` pueden complementar los logs nativos proporcionando eventos de auditoría y argumentos de ejecución para las actividades que hayan sido configuradas para ser auditadas.
 
-- Monitorear sistemas Linux presenta barreras arquitectónicas que todo analista senior debe sortear:
-
-- Falta de Estandarización: A diferencia de los Event IDs estructurados de Windows, los logs de Linux suelen ser texto plano no estructurado que varía drásticamente entre distribuciones (Debian vs. RHEL).
-
-- Ruido Excesivo: Archivos como /var/log/syslog ingieren miles de eventos por minuto generados por procesos benignos y tareas cron, dificultando la extracción de la señal maliciosa.
-
-- Puntos Ciegos Nativos: Por defecto, Linux no registra la creación de procesos efímeros, conexiones de red o modificaciones a archivos a nivel de kernel. Los atacantes pueden evadir el historial (~/.bash_history) fácilmente. Esto hace obligatorio el despliegue de herramientas de Runtime Monitoring como auditd o motores eBPF.
-
-
-## Matriz MITRE ATT&CK 
+## Matriz MITRE ATT&CK
 
 | Táctica | ID Técnica | Nombre de la Técnica | Evidencia en el Incidente |
 | :--- | :--- | :--- | :--- |
-| **Credential Access** | T1110.001 | Brute Force: Password Guessing | Logs SSH con masivos `Failed password`. |
-| **Persistence** | T1136.001 | Create Account: Local Account | Uso de `useradd` y `usermod` para cuenta `backdoor`. |
-| **Defense Evasion** | T1562.001 | Disable or Modify Tools | Ejecución vía sudo para detener el EDR. |
-| **Command and Control**| T1105 | Ingress Tool Transfer | Uso de `wget` para descargar el binario Naabu. |
-| **Discovery** | T1083 | File and Directory Discovery | Uso de `find` buscando la cadena `*secret*`. |
+| **Credential Access** | T1110.001 | Brute Force: Password Guessing | Logs SSH con múltiples eventos `Failed password`. |
+| **Persistence** | T1136.001 | Create Account: Local Account | Uso de `useradd` y `usermod` para crear y configurar la cuenta `backdoor`. |
+| **Defense Impairment** | T1685 | Disable or Modify Tools | Ejecución mediante `sudo` del comando destinado a detener el EDR local. |
+| **Command and Control** | T1105 | Ingress Tool Transfer | Uso de `wget` para descargar el binario de Naabu. |
+| **Discovery** | T1083 | File and Directory Discovery | Uso de `find` para realizar una búsqueda recursiva de archivos con `secret` en el nombre. |
 
+> **Nota:** La matriz utiliza la nomenclatura vigente de MITRE ATT&CK para **T1685 — Disable or Modify Tools**.
 
-## Indicadores de Compromiso (IoCs)
+## Indicadores y artefactos de compromiso
 
-| Tipo de IoC | Valor / Artefacto | Descripción |
+| Tipo | Valor / Artefacto | Descripción |
 | :--- | :--- | :--- |
-| **Cuenta** | `backdoor` (UID=1002) | Cuenta persistente agregada al grupo `sudo`. |
-| **Comando** | `systemctl stop edr` | Desactivación del agente de seguridad local. |
-| **Herramienta** | `naabu_2.3.5_linux_amd64.zip` | Escáner de puertos descargado vía GitHub en `/tmp`. |
-| **Ruta de red** | `192.168.50.0/24` | Segmento de red interna comprometido/escaneado. |
+| **Cuenta** | `backdoor` (UID=1002) | Cuenta local agregada al grupo `sudo`. |
+| **Comando** | `systemctl stop edr` | Comando observado para detener el agente de seguridad local. |
+| **Herramienta** | `naabu_2.3.5_linux_amd64.zip` | Herramienta de escaneo descargada mediante `wget` y almacenada en `/tmp`. |
+| **Segmento objetivo** | `192.168.50.0/24` | Segmento interno contra el que se observó actividad de escaneo. |
 
-## Metodología de Investigación y Ejecución de Comandos
+## Metodología de investigación y ejecución de comandos
 
-A continuación, se detalla el flujo de investigación y los comandos ejecutados durante la respuesta a incidentes.
+A continuación, se detalla el flujo de investigación y los comandos utilizados durante el laboratorio.
 
-1. Triage Inicial y Correlación de Tiempo (/var/log/syslog)
+### 1. Triage inicial y correlación temporal (`/var/log/syslog`)
 
-Antes de analizar anomalías, es crucial verificar que el reloj del servidor esté sincronizado (NTP) para que los timestamps de los logs coincidan con la red global. También auditamos los mensajes del kernel (ej. el módulo de seguridad Yama).
+Antes de analizar anomalías, es útil verificar la información temporal del sistema para interpretar correctamente los timestamps de los logs. También se revisaron mensajes relacionados con componentes de seguridad del kernel.
 
-```Bash
-
+```bash
 # Identificar el servidor de tiempo contactado por el sistema
 grep -i "Contacted time server" /var/log/syslog
 
-# Verificar mensajes de inicialización de módulos de seguridad del Kernel
+# Revisar mensajes relacionados con Yama
 grep -i "yama" /var/log/syslog
 ```
+
 <img src="Assets/Screenshot_11.png" width="1080">
 <img src="Assets/Screenshot_12.png" width="1080">
 
-2. Auditoría de Autenticación y Persistencia (/var/log/auth.log)
+### 2. Auditoría de autenticación y persistencia (`/var/log/auth.log`)
 
-El archivo de autenticación es la primera línea de defensa para detectar intrusiones por red y escalado de privilegios. Buscamos rastros de fuerza bruta por SSH y la creación no autorizada de cuentas administrativas.
+El archivo de autenticación constituye una fuente importante para investigar accesos SSH, intentos fallidos y determinadas operaciones de administración de cuentas. En este caso se buscaron patrones compatibles con password guessing y rastros de creación o modificación de cuentas.
 
-```Bash
-
-# Agrupar y contar intentos fallidos de inicio de sesión SSH (Fuerza Bruta)
+```bash
+# Agrupar y contar intentos fallidos de inicio de sesión SSH
 grep "Failed password" /var/log/auth.log | awk '{print $11, $9}' | sort | uniq -c
 
-# Detectar creación de cuentas persistentes y adición al grupo sudo (T1136.001)
+# Detectar eventos relacionados con creación o modificación de cuentas
 grep -E 'useradd|usermod' /var/log/auth.log
 ```
+
 <img src="Assets/Screenshot_13.png" width="1080">
 <img src="Assets/Screenshot_14.png" width="1080">
 
-3. Rastreo de Artefactos e Historial de Usuarios
+### 3. Rastreo de artefactos e historial de usuarios
 
-Los atacantes suelen instalar utilidades (como unzip, nmap o netcat) para facilitar la manipulación de archivos y el reconocimiento. Auditamos el gestor de paquetes de Debian y forzamos la lectura del historial de todos los usuarios ignorando advertencias de permisos.
+Los atacantes pueden utilizar herramientas adicionales para reconocimiento, transferencia de archivos o manipulación del sistema. Por ello, se revisaron los registros del gestor de paquetes y los historiales de shell disponibles en el laboratorio.
 
-```Bash
-
-# Identificar la versión exacta de las herramientas instaladas recientemente
+```bash
+# Buscar referencias a la instalación de unzip en los logs del gestor de paquetes
 grep "unzip" /var/log/dpkg.log
 
-# Leer de forma recursiva y con privilegios el historial de bash de todos los usuarios
+# Revisar los historiales de Bash disponibles para los usuarios
 sudo cat /home/*/.bash_history /root/.bash_history 2>/dev/null
 
-# Buscar la flag del desafío para este caso
+# Buscar la flag del desafío en los historiales disponibles
 sudo grep -i "THM" /home/*/.bash_history /root/.bash_history 2>/dev/null
 ```
+
 <img src="Assets/Screenshot_15.png" width="1080">
 <img src="Assets/Screenshot_16.png" width="1080">
 
-4. Runtime Monitoring y Reconstrucción del Ataque (auditd)
+> **Limitación:** el historial de Bash es una fuente complementaria y no debe interpretarse como un registro completo de la actividad del usuario. Puede no contener comandos ejecutados desde otras shells, comandos borrados o actividad que no haya sido registrada por el mecanismo de historial.
 
-Para suplir las deficiencias de los logs nativos, utilizamos ausearch para interactuar con los registros de auditd (ubicados en /var/log/audit/audit.log). Esto nos permitió ver las llamadas al sistema exactas que realizó el atacante.
+### 4. Runtime Monitoring y reconstrucción del ataque (`auditd`)
 
-```Bash
+Para complementar los logs nativos, se utilizaron `ausearch` y los registros de `auditd` ubicados en `/var/log/audit/audit.log`. Las reglas de auditoría configuradas en el laboratorio permitieron investigar eventos relacionados con acceso a archivos y ejecución de `wget`.
 
-# Investigar el acceso no autorizado a archivos sensibles (FIM)
+```bash
+# Investigar eventos asociados a la regla de auditoría para archivos sensibles
 sudo ausearch -i -k file_thmsecret
 
-# Descubrir la ingesta de herramientas (Transferencia de archivos vía wget)
+# Investigar eventos asociados a la ejecución de wget
 sudo ausearch -i -k proc_wget
 ```
+
 <img src="Assets/Screenshot_17.png" width="1080">
 
-## Hallazgo Crítico (Reconstrucción Final):
-Gracias al monitoreo de procesos de auditd (EXECVE), logramos aislar la cadena de ejecución final. El atacante descargó la herramienta de escaneo rápido Naabu (mediante la clave proc_wget). Posteriormente, listó el directorio temporal con ls /tmp, le asignó permisos de ejecución mediante chmod +x naabu, y ejecutó un escaneo de puertos agresivo contra la red interna apuntando al segmento 192.168.50.0/24. Finalizó su actividad realizando una búsqueda generalizada de archivos confidenciales con el comando find / -name *secret* -type f.   
+## Hallazgo crítico: reconstrucción de la actividad
 
+La correlación de los eventos de `auditd` permitió reconstruir una cadena de actividad posterior al acceso inicial:
+
+1. El atacante utilizó `wget` para descargar la herramienta **Naabu**.
+2. El archivo fue almacenado en `/tmp` y posteriormente se observó la modificación de sus permisos mediante `chmod +x`.
+3. Se ejecutó Naabu contra el segmento interno `192.168.50.0/24`, realizando actividad de descubrimiento de servicios.
+4. Finalmente, se ejecutó `find / -name *secret* -type f`, realizando una búsqueda recursiva de archivos cuyo nombre coincidiera con `secret`.
+
+La evidencia permite afirmar que estas acciones fueron ejecutadas en el entorno del laboratorio. **No permite afirmar, sin evidencia adicional, que los archivos encontrados hayan sido abiertos, modificados o exfiltrados.**
 
 <img src="Assets/Screenshot_18.png" width="1080">
 <img src="Assets/Screenshot_19.png" width="1080">
 
-## Recomendaciones y Plan de Remediación
+## Recomendaciones y plan de remediación
 
-1. **Hardening de SSH:** Deshabilitar inmediatamente la autenticación por contraseñas (`PasswordAuthentication no` en `/etc/ssh/sshd_config`) y forzar autenticación exclusiva por llaves PKI (Ed25519 o RSA).
-2. **Mitigación de Fuerza Bruta:** Desplegar herramientas de bloqueo automático como **Fail2Ban** o **CrowdSec** para bloquear IPs que superen un umbral de intentos fallidos.
-3. **Restricción de Directorios (Prevención de Ejecución):** Montar las particiones temporales (`/tmp` y `/var/tmp`) con la bandera `noexec` en el archivo `/etc/fstab` para evitar que scripts o binarios descargados por atacantes puedan ejecutarse directamente desde allí.
-4. **Centralización de Logs (SIEM):** Configurar `rsyslog` o `syslog-ng` para enviar los registros de `/var/log` y `audit.log` a un SIEM centralizado. Esto previene que un atacante destruya la evidencia borrando los logs locales.
+1. **Hardening de SSH:** deshabilitar la autenticación por contraseña cuando el entorno lo permita (`PasswordAuthentication no` en `/etc/ssh/sshd_config`) y utilizar autenticación mediante claves públicas con algoritmos aprobados por la organización.
+2. **Mitigación de Password Guessing:** desplegar controles como **Fail2Ban** o **CrowdSec**, además de MFA cuando sea técnicamente viable, y establecer políticas adecuadas de autenticación y bloqueo.
+3. **Restricción de ejecución en directorios temporales:** evaluar `noexec` para `/tmp` y `/var/tmp` como una capa adicional de defensa. Esta medida puede reducir la ejecución directa de binarios desde dichos directorios, pero no debe considerarse una solución completa, ya que existen mecanismos alternativos de ejecución.
+4. **Centralización de logs (SIEM):** enviar `syslog`, `auth.log` y `audit.log` a una infraestructura centralizada. Esto permite conservar evidencia fuera del host comprometido y facilita la correlación entre múltiples fuentes y sistemas.
+5. **Monitoreo de cuentas privilegiadas:** generar alertas ante creación de usuarios locales, incorporación de cuentas a grupos administrativos y cambios inesperados en servicios de seguridad.
 
 ## Conclusión
 
-Este incidente subraya de manera irrefutable que los registros de texto plano (syslog, auth.log) son insuficientes para detectar operaciones adversarias avanzadas si no se complementan con telemetría a nivel de Kernel. La integración de auditd en la estrategia de monitorización del SOC no es opcional; es el mecanismo definitivo que nos permitió pasar de simplemente saber "que alguien entró", a comprender con exactitud criptográfica qué herramientas descargaron, qué comandos exactos ejecutaron, qué infraestructura interna fue escaneada y qué archivos críticos se vieron comprometidos.
+Este laboratorio demuestra una diferencia fundamental entre **tener logs** y disponer de **telemetría suficiente para investigar**. Los logs tradicionales de Linux permitieron identificar actividad de autenticación y administración de cuentas, mientras que `auditd` aportó mayor contexto sobre determinadas ejecuciones y accesos auditados.
+
+La correlación de ambas fuentes permitió pasar de observar eventos aislados a reconstruir una secuencia de actividad: acceso SSH, creación de una cuenta privilegiada, intento de deshabilitar el EDR, transferencia de una herramienta, reconocimiento de red y búsqueda de archivos sensibles.
+
+Al mismo tiempo, la investigación muestra la importancia de respetar los límites de la evidencia: observar una búsqueda de archivos no demuestra exfiltración, y observar la descarga de una herramienta no implica por sí solo que haya sido utilizada con fines maliciosos. El valor del análisis SOC está en **correlacionar evidencia, formular hipótesis y distinguir claramente entre lo observado y lo que todavía debe demostrarse**.
