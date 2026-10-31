@@ -101,7 +101,7 @@ sudo ausearch -i -k proc_wget
 
 ## Hallazgo Crítico (Reconstrucción Final):
 Gracias al monitoreo de procesos de auditd (EXECVE), logramos aislar la cadena de ejecución final. El atacante descargó la herramienta de escaneo rápido Naabu (mediante la clave proc_wget). Posteriormente, listó el directorio temporal con ls /tmp, le asignó permisos de ejecución mediante chmod +x naabu, y ejecutó un escaneo de puertos agresivo contra la red interna apuntando al segmento 192.168.50.0/24. Finalizó su actividad realizando una búsqueda generalizada de archivos confidenciales con el comando find / -name *secret* -type f.   
-JPG+ 3
+
 
 <img src="Assets/Screenshot_18.png" width="1080">
 <img src="Assets/Screenshot_19.png" width="1080">
