@@ -64,3 +64,33 @@ grep -E 'useradd|usermod' /var/log/auth.log
 3. Rastreo de Artefactos e Historial de Usuarios
 
 Los atacantes suelen instalar utilidades (como unzip, nmap o netcat) para facilitar la manipulación de archivos y el reconocimiento. Auditamos el gestor de paquetes de Debian y forzamos la lectura del historial de todos los usuarios ignorando advertencias de permisos.
+
+```Bash
+
+# Identificar la versión exacta de las herramientas instaladas recientemente
+grep "unzip" /var/log/dpkg.log
+
+# Leer de forma recursiva y con privilegios el historial de bash de todos los usuarios
+sudo cat /home/*/.bash_history /root/.bash_history 2>/dev/null
+```
+
+4. Runtime Monitoring y Reconstrucción del Ataque (auditd)
+
+Para suplir las deficiencias de los logs nativos, utilizamos ausearch para interactuar con los registros de auditd (ubicados en /var/log/audit/audit.log). Esto nos permitió ver las llamadas al sistema exactas que realizó el atacante.
+
+```Bash
+
+# Investigar el acceso no autorizado a archivos sensibles (FIM)
+sudo ausearch -i -k file_thmsecret
+
+# Descubrir la ingesta de herramientas (Transferencia de archivos vía wget)
+sudo ausearch -i -k proc_wget
+```
+
+## Hallazgo Crítico (Reconstrucción Final):
+Gracias al monitoreo de procesos de auditd (EXECVE), logramos aislar la cadena de ejecución final. El atacante descargó la herramienta de escaneo rápido Naabu (mediante la clave proc_wget). Posteriormente, listó el directorio temporal con ls /tmp, le asignó permisos de ejecución mediante chmod +x naabu, y ejecutó un escaneo de puertos agresivo contra la red interna apuntando al segmento 192.168.50.0/24. Finalizó su actividad realizando una búsqueda generalizada de archivos confidenciales con el comando find / -name *secret* -type f.   
+JPG+ 3
+
+## Conclusión
+
+Este incidente subraya de manera irrefutable que los registros de texto plano (syslog, auth.log) son insuficientes para detectar operaciones adversarias avanzadas si no se complementan con telemetría a nivel de Kernel. La integración de auditd en la estrategia de monitorización del SOC no es opcional; es el mecanismo definitivo que nos permitió pasar de simplemente saber "que alguien entró", a comprender con exactitud criptográfica qué herramientas descargaron, qué comandos exactos ejecutaron, qué infraestructura interna fue escaneada y qué archivos críticos se vieron comprometidos.
