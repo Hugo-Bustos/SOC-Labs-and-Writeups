@@ -6,7 +6,7 @@
 ![OS](https://img.shields.io/badge/OS-Ubuntu_Linux-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Herramientas](https://img.shields.io/badge/Tools-Auditd%20%7C%20Grep%20%7C%20Ausearch-004d40?style=for-the-badge)
 
-<img src="Portada Linux.jpg" width="1080">
+<img src="Assets/Portada Linux.jpg" width="1080">
 
 ## Introducción
 
