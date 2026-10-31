@@ -15,12 +15,13 @@
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 ## Sobre mí
-Fui profesor de Historia y Economía por casi 10 años, coordiné y lidere diversos proyectos, los cuales me acercaron al mundo tecnológico. Actualmente estoy finalizando mis estudios superiores como profesional de la Ciberseguridad.
-
+Soy estudiante de Ciberseguridad en transición hacia el área de Seguridad Defensiva, con especial interés en SOC, análisis de logs, detección de amenazas e investigación de incidentes.
+Antes de iniciar mi formación en Ciberseguridad trabajé durante casi una década en educación, experiencia que me permitió desarrollar habilidades de análisis, investigación, organización y comunicación técnica.
+Actualmente utilizo este repositorio para documentar mi evolución práctica mediante laboratorios de SOC, análisis de logs, tráfico de red, Threat Hunting, Detection Engineering y scripting defensivo.
 
 ## ¿Qué esperar aquí?
 Análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
-En este repositorio he ido documentando distintos laboratorios de Ciberseguridad Defensiva, análisis de incidentes y Threat Hunting. Con un enfoque en el análisis técnico, metodologías de investigación y medidas de mitigación frente a potenciales amenazas
+Este repositorio no busca únicamente acumular certificaciones o reproducir comandos de laboratorios. Mi objetivo es documentar cómo analizo evidencia, formulo hipótesis, valido hallazgos y tomo decisiones defensivas.
 
 ---
 
@@ -41,7 +42,7 @@ Cada laboratorio documentado incluye:
 ### 02. Análisis de Logs & SIEM
 * 🔹 **[Análisis de logs en error 401](<./Scripts/Analizador 401.py>)**: Detection Engineering básico para logs enfocado en el error 401.
 * 🔹 **[Detección de Web Shells (Incident Response)](<./Writeups/Detecting Web Shells>):** Análisis de logs de Apache utilizando herramientas CLI (grep, awk) para reconstruir la inyección y ejecución de una Web Shell maliciosa
-* 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo frente a una botnet atacando recursos web. Incluye procesamiento de logs en terminal, correlación avanzada de eventos con Splunk y estrategias de prevención.
+* 🔹 **[Detección de ataque web DDoS](<./Writeups/Detecting Web DDoS (TryHackMe)>):** Análisis defensivo de un HTTP Flood distribuido contra recursos web.
 * 🔹 **[Investigación de un Endpoint Windows mediante Event Logs, Sysmon y PowerShell](<./Writeups/Windows Logging for SOC>):** Este reporte documenta la investigación de un endpoint Windows comprometido mediante el análisis correlacionado de registros de seguridad nativos (Security.evtx), telemetría de Sysmon y artefactos locales de PowerShell.
 * 🔹 **[Investigación de un Endpoint Linux mediante Logs Nativos y Auditd](<./Writeups/Linux Logging & Runtime Monitoring para SOC>):** Este reporte documenta la cacería de amenazas en un servidor comprometido mediante el análisis de registros tradicionales (syslog, auth.log) y el monitoreo en tiempo real de system calls usando ausearch para rastrear la ingesta y ejecución de herramientas maliciosas.
 
