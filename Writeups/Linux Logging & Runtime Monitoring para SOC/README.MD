@@ -44,6 +44,16 @@ Para un Blue Team, la visibilidad es la diferencia entre contener un incidente e
 | **Command and Control**| T1105 | Ingress Tool Transfer | Uso de `wget` para descargar el binario Naabu. |
 | **Discovery** | T1083 | File and Directory Discovery | Uso de `find` buscando la cadena `*secret*`. |
 
+
+## Indicadores de Compromiso (IoCs)
+
+| Tipo de IoC | Valor / Artefacto | Descripción |
+| :--- | :--- | :--- |
+| **Cuenta** | `backdoor` (UID=1002) | Cuenta persistente agregada al grupo `sudo`. |
+| **Comando** | `systemctl stop edr` | Desactivación del agente de seguridad local. |
+| **Herramienta** | `naabu_2.3.5_linux_amd64.zip` | Escáner de puertos descargado vía GitHub en `/tmp`. |
+| **Ruta de red** | `192.168.50.0/24` | Segmento de red interna comprometido/escaneado. |
+
 ## Metodología de Investigación y Ejecución de Comandos
 
 A continuación, se detalla el flujo de investigación y los comandos ejecutados durante la respuesta a incidentes.
