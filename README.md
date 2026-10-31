@@ -20,18 +20,42 @@ Antes de iniciar mi formación en Ciberseguridad trabajé durante casi una déca
 Actualmente utilizo este repositorio para documentar mi evolución práctica mediante laboratorios de SOC, análisis de logs, tráfico de red, Threat Hunting, Detection Engineering y scripting defensivo.
 
 ## ¿Qué esperar aquí?
-Análisis de logs, laboratorios prácticos de SOC (SIEM, PCAP, Threat Hunting) y metodologías de mitigación.
-Este repositorio no busca únicamente acumular certificaciones o reproducir comandos de laboratorios. Mi objetivo es documentar cómo analizo evidencia, formulo hipótesis, valido hallazgos y tomo decisiones defensivas.
+Este repositorio reúne laboratorios e investigaciones prácticas orientadas a SOC y Blue Team, incluyendo análisis de logs, tráfico de red, Threat Hunting, Detection Engineering, respuesta a incidentes y scripting defensivo.
+
+El objetivo no es únicamente documentar herramientas o reproducir comandos, sino mostrar cómo se analiza una situación de seguridad a partir de evidencia, cómo se formulan y validan hipótesis y cómo se llega a una conclusión defensiva.
+
+En los distintos proyectos intento seguir un proceso similar al utilizado en una investigación de seguridad:
+
+Detectar → Triage → Investigar → Correlacionar → Evaluar → Decidir → Responder
+
+Cada laboratorio representa además una etapa de mi aprendizaje, por lo que procuro documentar tanto los resultados obtenidos como las limitaciones y aspectos que podrían mejorarse.
 
 ---
 
 ##  Enfoque y Metodología
-Cada laboratorio documentado incluye:
-1. **Contexto de la Amenaza:** Escenario operativo y vectores de ataque.
-2. **Análisis Técnico:** Evidencia en capturas de pantalla, análisis de paquetes (PCAP) y logs.
-3. **Mapeo MITRE ATT&CK:** Identificación de TTPs (Tácticas, Técnicas y Procedimientos).
-4. **Mitigación y Remediación:** Recomendaciones defensivas para la infraestructura.
+Intento abordar cada investigación desde una perspectiva orientada al trabajo de un analista SOC, priorizando la evidencia y el contexto por sobre las conclusiones apresuradas.
 
+El proceso que utilizo como referencia es:
+
+    Contexto: Comprender el escenario, los activos involucrados y el comportamiento esperado.
+
+    Triage: Determinar rápidamente si la actividad merece investigación y establecer una prioridad inicial.
+
+    Análisis: Examinar logs, tráfico de red, procesos, artefactos y otros indicadores disponibles.
+
+    Correlación: Relacionar eventos temporalmente y entre distintas fuentes para construir una visión más completa.
+
+    Validación: Buscar evidencia que confirme o contradiga la hipótesis inicial, considerando también posibles falsos positivos.
+
+    Mapeo MITRE ATT&CK: Relacionar las técnicas observadas con el comportamiento del adversario cuando existe evidencia suficiente.
+
+    Evaluación: Determinar impacto, severidad, nivel de confianza e indicadores relevantes.
+
+    Respuesta: Proponer acciones de contención, erradicación, recuperación o prevención según el escenario.
+
+    Documentación: Registrar evidencia, razonamiento, limitaciones y conclusiones de forma reproducible.
+
+No todos los laboratorios permiten completar todas estas etapas. Cuando la evidencia disponible no permite confirmar una hipótesis, intento indicarlo explícitamente en lugar de presentar una conclusión como un hecho.
 ---
 
 ## 📂 Índice de Laboratorios
@@ -50,7 +74,7 @@ Cada laboratorio documentado incluye:
 * 🔹 **[Criptografía Simétrica](<./cryptography/Example with Fernet>):** Ejercicio de código que permite cifrar y descifrar mensajes usando Fernet (simétrico)
   
 ### 04. Investigaciones de Laboratorios
-* 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Investigación de escalación de privilegios y persistencia en sistemas Linux.
+* 🔹 **[Grand Larceny Auto, LAB TRYHACKME: Reverse Engineering](<./Writeups/Grand-Larceny-Auto-Tryhackme-soluci-n-linux-espa-ol>) :** Análisis de una vulnerabilidad de lógica y explotación de una aplicación .NET mediante manipulación de estado y análisis de su implementación.
 
 ---
 
@@ -59,6 +83,13 @@ Cada laboratorio documentado incluye:
 * **Sistemas Operativos:** Linux (Kali / Ubuntu), Windows Server.
 * **Scripting y Automatización:** Python (Scripting defensivo y procesamiento de JSON/CSV), Bash.
 
+
+* **SIEM y análisis de seguridad:** Splunk, ELK Stack, Brim.
+* **Análisis de red:** Wireshark, Tshark.
+* **Windows / DFIR:** Event Viewer, Sysmon, PowerShell.
+* **Linux / monitoreo:** syslog, auth.log, auditd, ausearch.
+* **Scripting y automatización:** Python, Bash.
+* **Frameworks y metodologías:** MITRE ATT&CK, análisis basado en evidencia e investigación orientada a incidentes.
 ## Principios que estoy aplicando
 
 Durante el desarrollo de este portafolio estoy intentando aplicar los siguientes principios de análisis:
