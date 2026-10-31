@@ -7,8 +7,7 @@
 
 <img src="Investigación forense de endpoint Windows.png" width="1080">
 
-## Resumen Ejecutivo
-
+## Resumen 
 Este reporte documenta la investigación de un endpoint Windows comprometido mediante el análisis correlacionado de registros de seguridad nativos (`Security.evtx`), telemetría de Sysmon y artefactos locales de PowerShell.
 
 La investigación permitió reconstruir una secuencia de actividad que comienza con múltiples intentos fallidos de autenticación RDP y un inicio de sesión exitoso, seguido por modificaciones en las cuentas y grupos locales, descarga y ejecución de un artefacto, comunicaciones de red asociadas al proceso y establecimiento de persistencia.
