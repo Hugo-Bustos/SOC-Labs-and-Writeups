@@ -49,6 +49,9 @@ grep -i "Contacted time server" /var/log/syslog
 # Verificar mensajes de inicialización de módulos de seguridad del Kernel
 grep -i "yama" /var/log/syslog
 ```
+<img src="Assets/Screenshot_11.png" width="1080">
+<img src="Assets/Screenshot_12.png" width="1080">
+
 2. Auditoría de Autenticación y Persistencia (/var/log/auth.log)
 
 El archivo de autenticación es la primera línea de defensa para detectar intrusiones por red y escalado de privilegios. Buscamos rastros de fuerza bruta por SSH y la creación no autorizada de cuentas administrativas.
@@ -61,6 +64,9 @@ grep "Failed password" /var/log/auth.log | awk '{print $11, $9}' | sort | uniq -
 # Detectar creación de cuentas persistentes y adición al grupo sudo (T1136.001)
 grep -E 'useradd|usermod' /var/log/auth.log
 ```
+<img src="Assets/Screenshot_13.png" width="1080">
+<img src="Assets/Screenshot_14.png" width="1080">
+
 3. Rastreo de Artefactos e Historial de Usuarios
 
 Los atacantes suelen instalar utilidades (como unzip, nmap o netcat) para facilitar la manipulación de archivos y el reconocimiento. Auditamos el gestor de paquetes de Debian y forzamos la lectura del historial de todos los usuarios ignorando advertencias de permisos.
@@ -72,7 +78,12 @@ grep "unzip" /var/log/dpkg.log
 
 # Leer de forma recursiva y con privilegios el historial de bash de todos los usuarios
 sudo cat /home/*/.bash_history /root/.bash_history 2>/dev/null
+
+# Buscar la flag del desafío para este caso
+sudo grep -i "THM" /home/*/.bash_history /root/.bash_history 2>/dev/null
 ```
+<img src="Assets/Screenshot_15.png" width="1080">
+<img src="Assets/Screenshot_16.png" width="1080">
 
 4. Runtime Monitoring y Reconstrucción del Ataque (auditd)
 
@@ -86,10 +97,14 @@ sudo ausearch -i -k file_thmsecret
 # Descubrir la ingesta de herramientas (Transferencia de archivos vía wget)
 sudo ausearch -i -k proc_wget
 ```
+<img src="Assets/Screenshot_17.png" width="1080">
 
 ## Hallazgo Crítico (Reconstrucción Final):
 Gracias al monitoreo de procesos de auditd (EXECVE), logramos aislar la cadena de ejecución final. El atacante descargó la herramienta de escaneo rápido Naabu (mediante la clave proc_wget). Posteriormente, listó el directorio temporal con ls /tmp, le asignó permisos de ejecución mediante chmod +x naabu, y ejecutó un escaneo de puertos agresivo contra la red interna apuntando al segmento 192.168.50.0/24. Finalizó su actividad realizando una búsqueda generalizada de archivos confidenciales con el comando find / -name *secret* -type f.   
 JPG+ 3
+
+<img src="Assets/Screenshot_18.png" width="1080">
+<img src="Assets/Screenshot_19.png" width="1080">
 
 ## Conclusión
 
