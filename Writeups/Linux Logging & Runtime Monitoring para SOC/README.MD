@@ -47,3 +47,18 @@ grep -i "Contacted time server" /var/log/syslog
 # Verificar mensajes de inicialización de módulos de seguridad del Kernel
 grep -i "yama" /var/log/syslog
 ```
+2. Auditoría de Autenticación y Persistencia (/var/log/auth.log)
+
+El archivo de autenticación es la primera línea de defensa para detectar intrusiones por red y escalado de privilegios. Buscamos rastros de fuerza bruta por SSH y la creación no autorizada de cuentas administrativas.
+
+```Bash
+
+# Agrupar y contar intentos fallidos de inicio de sesión SSH (Fuerza Bruta)
+grep "Failed password" /var/log/auth.log | awk '{print $11, $9}' | sort | uniq -c
+
+# Detectar creación de cuentas persistentes y adición al grupo sudo (T1136.001)
+grep -E 'useradd|usermod' /var/log/auth.log
+```
+3. Rastreo de Artefactos e Historial de Usuarios
+
+Los atacantes suelen instalar utilidades (como unzip, nmap o netcat) para facilitar la manipulación de archivos y el reconocimiento. Auditamos el gestor de paquetes de Debian y forzamos la lectura del historial de todos los usuarios ignorando advertencias de permisos.
