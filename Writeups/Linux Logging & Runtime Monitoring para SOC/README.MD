@@ -33,6 +33,17 @@ Para un Blue Team, la visibilidad es la diferencia entre contener un incidente e
 
 ✔️ Puntos Ciegos Nativos: Por defecto, Linux no registra la creación de procesos efímeros, conexiones de red o modificaciones a archivos a nivel de kernel. Los atacantes pueden evadir el historial (~/.bash_history) fácilmente. Esto hace obligatorio el despliegue de herramientas de Runtime Monitoring como auditd o motores eBPF.
 
+
+## Matriz MITRE ATT&CK 
+
+| Táctica | ID Técnica | Nombre de la Técnica | Evidencia en el Incidente |
+| :--- | :--- | :--- | :--- |
+| **Credential Access** | T1110.001 | Brute Force: Password Guessing | Logs SSH con masivos `Failed password`. |
+| **Persistence** | T1136.001 | Create Account: Local Account | Uso de `useradd` y `usermod` para cuenta `backdoor`. |
+| **Defense Evasion** | T1562.001 | Disable or Modify Tools | Ejecución vía sudo para detener el EDR. |
+| **Command and Control**| T1105 | Ingress Tool Transfer | Uso de `wget` para descargar el binario Naabu. |
+| **Discovery** | T1083 | File and Directory Discovery | Uso de `find` buscando la cadena `*secret*`. |
+
 ## Metodología de Investigación y Ejecución de Comandos
 
 A continuación, se detalla el flujo de investigación y los comandos ejecutados durante la respuesta a incidentes.
