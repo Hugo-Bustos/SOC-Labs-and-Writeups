@@ -32,7 +32,7 @@ Cada laboratorio representa además una etapa de mi aprendizaje, por lo que proc
 
 ---
 
-##  Enfoque y Metodología
+## 📊 Enfoque y Metodología
 Intento abordar cada investigación desde una perspectiva orientada al trabajo de un analista SOC, priorizando la evidencia y el contexto por sobre las conclusiones apresuradas.
 
 El proceso que utilizo como referencia es:
@@ -78,7 +78,7 @@ No todos los laboratorios permiten completar todas estas etapas. Cuando la evide
 
 ---
 
-## Herramientas y tecnologías:
+## 🛠️ Herramientas y tecnologías:
 
 * **SIEM y análisis de seguridad:** Splunk, ELK Stack, Brim.
 * **Análisis de red:** Wireshark, Tshark.
