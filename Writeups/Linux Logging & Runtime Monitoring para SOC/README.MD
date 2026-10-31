@@ -15,23 +15,23 @@ En el ecosistema corporativo moderno, Linux es la columna vertebral de la infrae
 
 ## La Importancia del Monitoreo en Linux🐧
 
-Para un Blue Team, la visibilidad es la diferencia entre contener un incidente en minutos o descubrir una brecha meses después de la exfiltración de datos. La recolección estructurada de logs en Linux permite:
+-Para un Blue Team, la visibilidad es la diferencia entre contener un incidente en minutos o descubrir una brecha meses después de la exfiltración de datos. La recolección estructurada de logs en Linux permite:
 
-✔️ Reconstruir Líneas de Tiempo (Timelining): Rastrear la actividad del atacante desde el compromiso inicial (fuerza bruta SSH) hasta el movimiento lateral o impacto.
+-Reconstruir Líneas de Tiempo (Timelining): Rastrear la actividad del atacante desde el compromiso inicial (fuerza bruta SSH) hasta el movimiento lateral o impacto.
 
-✔️ Identificar TTPs: Mapear el comportamiento del atacante utilizando el framework MITRE ATT&CK (ej. T1110 para fuerza bruta, T1105 para transferencia de herramientas).
+-Identificar TTPs: Mapear el comportamiento del atacante utilizando el framework MITRE ATT&CK (ej. T1110 para fuerza bruta, T1105 para transferencia de herramientas).
 
-✔️ Auditoría de Integridad: Detectar la manipulación de configuraciones críticas o la creación de usuarios encubiertos (backdoors).
+-Auditoría de Integridad: Detectar la manipulación de configuraciones críticas o la creación de usuarios encubiertos (backdoors).
 
 ## Desafíos Operativos para el SOC
 
-✔️ Monitorear sistemas Linux presenta barreras arquitectónicas que todo analista senior debe sortear:
+-Monitorear sistemas Linux presenta barreras arquitectónicas que todo analista senior debe sortear:
 
-✔️ Falta de Estandarización: A diferencia de los Event IDs estructurados de Windows, los logs de Linux suelen ser texto plano no estructurado que varía drásticamente entre distribuciones (Debian vs. RHEL).
+-Falta de Estandarización: A diferencia de los Event IDs estructurados de Windows, los logs de Linux suelen ser texto plano no estructurado que varía drásticamente entre distribuciones (Debian vs. RHEL).
 
-✔️ Ruido Excesivo: Archivos como /var/log/syslog ingieren miles de eventos por minuto generados por procesos benignos y tareas cron, dificultando la extracción de la señal maliciosa.
+-Ruido Excesivo: Archivos como /var/log/syslog ingieren miles de eventos por minuto generados por procesos benignos y tareas cron, dificultando la extracción de la señal maliciosa.
 
-✔️ Puntos Ciegos Nativos: Por defecto, Linux no registra la creación de procesos efímeros, conexiones de red o modificaciones a archivos a nivel de kernel. Los atacantes pueden evadir el historial (~/.bash_history) fácilmente. Esto hace obligatorio el despliegue de herramientas de Runtime Monitoring como auditd o motores eBPF.
+-Puntos Ciegos Nativos: Por defecto, Linux no registra la creación de procesos efímeros, conexiones de red o modificaciones a archivos a nivel de kernel. Los atacantes pueden evadir el historial (~/.bash_history) fácilmente. Esto hace obligatorio el despliegue de herramientas de Runtime Monitoring como auditd o motores eBPF.
 
 
 ## Matriz MITRE ATT&CK 
@@ -126,6 +126,13 @@ Gracias al monitoreo de procesos de auditd (EXECVE), logramos aislar la cadena d
 
 <img src="Assets/Screenshot_18.png" width="1080">
 <img src="Assets/Screenshot_19.png" width="1080">
+
+## Recomendaciones y Plan de Remediación
+
+1. **Hardening de SSH:** Deshabilitar inmediatamente la autenticación por contraseñas (`PasswordAuthentication no` en `/etc/ssh/sshd_config`) y forzar autenticación exclusiva por llaves PKI (Ed25519 o RSA).
+2. **Mitigación de Fuerza Bruta:** Desplegar herramientas de bloqueo automático como **Fail2Ban** o **CrowdSec** para bloquear IPs que superen un umbral de intentos fallidos.
+3. **Restricción de Directorios (Prevención de Ejecución):** Montar las particiones temporales (`/tmp` y `/var/tmp`) con la bandera `noexec` en el archivo `/etc/fstab` para evitar que scripts o binarios descargados por atacantes puedan ejecutarse directamente desde allí.
+4. **Centralización de Logs (SIEM):** Configurar `rsyslog` o `syslog-ng` para enviar los registros de `/var/log` y `audit.log` a un SIEM centralizado. Esto previene que un atacante destruya la evidencia borrando los logs locales.
 
 ## Conclusión
 
